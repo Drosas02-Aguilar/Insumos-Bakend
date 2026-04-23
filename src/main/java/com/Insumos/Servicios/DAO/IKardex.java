@@ -11,13 +11,13 @@ public interface IKardex {
 
     String getUsuarioPorContrato(String clavecontrato);
 
-    List<KardexResultado> getinfoPorNodoRecepcion(String calvenodo);
+    List<KardexResultado> getinfoPorNodoRecepcion(String clavenodo);
 
     List<KardexResultado> getInfoPorNodosEntrega(String clave1, String clave2, String clave3);
 
     List<NodoComercial> getNodosRecepcion();
 
-    List<NodoComercial> getNodosEntrga();
+    List<NodoComercial> getNodosEntrega();
 
     List<KardexResultado> getInfoPorZonaInyeccion(String clavezona);
 
