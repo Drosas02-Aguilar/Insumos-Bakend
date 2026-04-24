@@ -1,11 +1,12 @@
 package com.Insumos.Servicios.DTO;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class KardexResultado {
 
-    private Date fecha;
+    private LocalDateTime fecha;
     private String claveContrato;
     private String usuario;
     private String nodoRecepcion;
@@ -25,13 +26,15 @@ public class KardexResultado {
     private BigDecimal cargoGasExceso;
     private BigDecimal totalFacturar;
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
+
+   
 
     public String getClaveContrato() {
         return claveContrato;

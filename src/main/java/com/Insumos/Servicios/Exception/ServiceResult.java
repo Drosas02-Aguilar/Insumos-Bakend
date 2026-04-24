@@ -1,7 +1,7 @@
 package com.Insumos.Servicios.Exception;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
-
 
 public class ServiceResult<T> {
     
@@ -10,6 +10,7 @@ public class ServiceResult<T> {
     public String ErrorMesage;
     public T object;
     public List<T> objects;
+    @JsonIgnore
     public Exception ex;
     public String message;
     

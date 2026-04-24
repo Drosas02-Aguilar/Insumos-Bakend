@@ -7,6 +7,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.ParameterMode;
 import jakarta.persistence.StoredProcedureQuery;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,8 +37,15 @@ public class KardexService implements IKardex {
 
     private KardexResultado MapKaderdex(Object[] row) {
         KardexResultado kardexResultado = new KardexResultado();
-        kardexResultado.setFecha(row[0] instanceof java.sql.Date
-                ? new Date(((java.sql.Date) row[0]).getTime()) : (Date) row[0]);
+
+        if (row[0] != null) {
+            if (row[0] instanceof LocalDateTime) {
+                kardexResultado.setFecha((LocalDateTime) row[0]);
+            } else if (row[0] instanceof Timestamp) {
+                kardexResultado.setFecha(((Timestamp) row[0]).toLocalDateTime());
+            }
+        }
+
         kardexResultado.setClaveContrato(ToString(row[1]));
         kardexResultado.setUsuario(ToString(row[2]));
         kardexResultado.setNodoRecepcion(ToString(row[3]));
@@ -62,7 +71,7 @@ public class KardexService implements IKardex {
     public List<String> getContratosPorUsuario(String nombreusuario) {
 
         StoredProcedureQuery query = entityManager
-                .createStoredProcedureQuery("UGTP_SP_CONTRATOS_POR USUARIO");
+                .createStoredProcedureQuery("UGTP_SP_USUARIO_POR_CONTRATO");
         query.registerStoredProcedureParameter("p_nombre_usuario", String.class, ParameterMode.IN);
         query.registerStoredProcedureParameter("p_cursor", void.class, ParameterMode.REF_CURSOR);
         query.setParameter("p_nombre_usuario", nombreusuario);
@@ -78,7 +87,7 @@ public class KardexService implements IKardex {
     @Override
     public String getUsuarioPorContrato(String clavecontrato) {
         StoredProcedureQuery query = entityManager
-                .createStoredProcedureQuery("UGTP_SP_USUARIO_POR_CONTRATO");
+                .createStoredProcedureQuery("UGTP_SP_CONTRATO_POR_USUARIO");
         query.registerStoredProcedureParameter("p_clave_contrato", String.class, ParameterMode.IN);
         query.registerStoredProcedureParameter("p_cursor", void.class, ParameterMode.REF_CURSOR);
         query.setParameter("p_clave_contrato", clavecontrato);
@@ -93,7 +102,7 @@ public class KardexService implements IKardex {
     public List<KardexResultado> getinfoPorNodoRecepcion(String clavenodo) {
         StoredProcedureQuery query = entityManager
                 .createStoredProcedureQuery("UGTP_SP_INFO_NODO_RECEPCION");
-        query.registerStoredProcedureParameter("p_clave_nod", String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter("p_clave_nodo", String.class, ParameterMode.IN);
         query.registerStoredProcedureParameter("p_cursor", void.class, ParameterMode.REF_CURSOR);
         query.setParameter("p_clave_nodo", clavenodo);
         query.execute();
