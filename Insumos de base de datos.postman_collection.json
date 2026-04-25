@@ -1,0 +1,251 @@
+{
+  "info": {
+    "_postman_id": "fb9c5e42-125b-4a6b-a01f-afc8516c5788",
+    "name": "Insumos de base de datos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50211303",
+    "_collection_link": "https://go.postman.co/collection/50211303-fb9c5e42-125b-4a6b-a01f-afc8516c5788?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Carga Masiva",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "archivo",
+              "type": "file",
+              "uuid": "d71d0662-6c3b-4443-98a0-fd2f2b00db4c",
+              "src": "/C:/Users/digis/Downloads/Insumos Evaluación1.xlsx"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/carga/excel",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "carga",
+            "excel"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Contrato por usuarios",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Usuarios por contrato",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Informacion por nodo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/kardex/nodo-recepcion?clave=V033",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "kardex",
+            "nodo-recepcion"
+          ],
+          "query": [
+            {
+              "key": "clave",
+              "value": "V033"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Nodo de entrega",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/kardex/nodos-entrega?c1=N103&c2=N046&c3=E168",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "kardex",
+            "nodos-entrega"
+          ],
+          "query": [
+            {
+              "key": "c1",
+              "value": "N103"
+            },
+            {
+              "key": "c2",
+              "value": "N046"
+            },
+            {
+              "key": "c3",
+              "value": "E168"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listado nodos comerciales",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/kardex/nodos/recepcion",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "kardex",
+            "nodos",
+            "recepcion"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Entrega Nodos Listado",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/kardex/nodos/entrega",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "kardex",
+            "nodos",
+            "entrega"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Informacion especifica de nodos Inyeccion",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/kardex/zona-inyeccion?zona=Zona 3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "kardex",
+            "zona-inyeccion"
+          ],
+          "query": [
+            {
+              "key": "zona",
+              "value": "Zona 3"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Nodos zonas extraccion",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/kardex/zonas-extraccion?z1=Zona 2&z2=Zona 5&z3=Zona 6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "kardex",
+            "zonas-extraccion"
+          ],
+          "query": [
+            {
+              "key": "z1",
+              "value": "Zona 2"
+            },
+            {
+              "key": "z2",
+              "value": "Zona 5"
+            },
+            {
+              "key": "z3",
+              "value": "Zona 6"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener todos los contratos de un usuario en especifico",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Total a facturar",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Promedio de la Cantidad Nominada Recepción",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
